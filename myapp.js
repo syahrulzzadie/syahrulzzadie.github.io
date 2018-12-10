@@ -1,5 +1,5 @@
 function getElementId(idElement){
-  document.getElementById(idElement);
+  return document.getElementById(idElement);
 }
 
 window.onload = () => {
