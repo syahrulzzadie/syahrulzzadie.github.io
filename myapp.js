@@ -8,3 +8,4 @@ window.onload = () => {
   title.innerHTML = "Syahrul Adiguna Kurniawan";
   body.innerHTML = "Hai";
 };
+
