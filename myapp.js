@@ -4,5 +4,5 @@ function getElementId(idElement){
 
 window.onload = () => {
   var body = getElementId('myapp');
-  body.innerHTML('Hai');
+  body.innerHTML = "Hai";
 };
