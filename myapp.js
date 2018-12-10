@@ -4,7 +4,7 @@ function getElementId(idElement){
 
 window.onload = () => {
   var title = getElementId('myTitle');
-  var body = getElementId('myapp');
+  var body = getElementId('myApp');
   title.innerHTML = "Syahrul Adiguna Kurniawan";
   body.innerHTML = "Hai";
 };
