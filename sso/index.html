@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Google Login</title>
+	<script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+	<script>
+		function parseJwt(token) {
+			var base64Url = token.split('.')[1];
+			var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+			var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+				return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+			}).join(''));
+			return JSON.parse(jsonPayload);
+		};
+		function handleCredentialResponse(response) {
+			const payload = parseJwt(response.credential);
+			console.log(payload);
+		}
+		window.onload = function () {
+			google.accounts.id.initialize({
+				client_id: "91407158529-988bpdfgm106jlviakhp72uegduhqnh0.apps.googleusercontent.com",
+				callback: handleCredentialResponse
+			});
+			google.accounts.id.renderButton(
+				document.getElementById("buttonDiv"),
+            { theme: "outline", size: "large" }  // customization attributes
+            );
+          google.accounts.id.prompt(); // also display the One Tap dialog
+      }
+  </script>
+  <div id="buttonDiv"></div>
+</body>
+</html>
